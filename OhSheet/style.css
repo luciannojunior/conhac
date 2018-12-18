@@ -1,0 +1,10 @@
+span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#entrada, #saida {
+  width: 600px;
+  height: 200px;
+}

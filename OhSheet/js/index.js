@@ -12,17 +12,32 @@
     
     const entrada = getById('entrada')()
     const saida = getById('saida')()
+    const separador = getById('separador')()
+    const nome = getById('nome')()
+    const nota1 = getById('nota1')()
+    const nota2 = getById('nota2')()
+    const nota3 = getById('nota3')()
     entrada.onkeyup = () => analyseInput()
   
     const splitBy = divider => text => text.split(divider)
     
-    const groupCSVList = list => tail(list).reduce(getReducerForCSV(splitBy(':')(head(list))), [])
+    const groupCSVList = list => tail(list).reduce(getReducerForCSV(splitBy(getValue(separador))(head(list))), [])
     
     const parseCSV = csvText => compose(groupCSVList, splitBy('\n'), getValue)(entrada)
-       
+    
+    const getLabels = () => ({
+      [getValue(nome)]: 'nome',
+      [getValue(nota1)]: 'nota1',
+      [getValue(nota2)]: 'nota2',
+      [getValue(nota3)]: 'nota3',
+    })
+    
+    const treatKey = labels => key => labels[key] || key
+    
     const getReducerForCSV = keys => (acc, current) => {
-      const values = splitBy(':')(current)
-      return [...acc, values.reduce((accObj, current, i) => ({...accObj, [trim(keys[i])]: trim(current) }),{})]
+      const values = splitBy(getValue(separador))(current)
+      const treatKeyForLabel = treatKey(getLabels())
+      return [...acc, values.reduce((accObj, current, i) => ({...accObj, [treatKeyForLabel(trim(keys[i]))]: trim(current) }),{})]
     }
     
     const dumpOnOutput = str => setValue(saida)(str)

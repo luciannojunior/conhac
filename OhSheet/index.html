@@ -1,22 +1,59 @@
-<html lang="pt-br">
-  <head>
-    <title>OhSheet - Controle Acadêmico</title>
-    <meta charshet="utf-8"/>
-    <script src="script.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en" >
 
-    <div style="display: flex;">
+<head>
+  <meta charset="UTF-8">
+  <title>AutoGraderUFCG</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div style="display: flex;">
+  <div>
+    <span>Cole abaixo o CSV que contenha os campos nome, nota1, nota2 e nota3, ou configure o nome destes campos para representar tais notas. O separador padrão do csv é uma vírgula, mas você também pode configurá-lo:</span>
+    <textarea id="entrada"></textarea>
+  </div>
+  <div style="margin-left: 15px">
+    <span>Acesse o Registro de Notas de sua disciplina no Controle Acadêmico em um browser moderno.<br/>Acesse o Console Javascript e cole o seguinte código abaixo. </span>
+    <textarea id="saida"></textarea>
+  </div>
+</div>
+<div id="config">
       <div>
-        <span>Cole abaixo o CSV (separador=:) que contenha os campos nome, nota1, nota2 e nota3:</span>
-        <textarea id="entrada"></textarea>
+        <span>Separador do CSV:</span>
+       <input id="separador" value=","/>
       </div>
-      <div style="margin-left: 15px">
-        <span>Copie tal código e cole no Registro de Notas no Controle Acadêmico</span>
-        <textarea id="saida"></textarea>
+      <div>
+        <span>Label nome:</span>
+       <input id="nome" value="nome"/>
+      </div>
+      <div>
+        <span>Label nota1:</span>
+       <input id="nota1" value="nota1"/>
+      </div>
+      <div>
+        <span>Label nota 2:</span>
+       <input id="nota2" value="nota2"/>
+      </div>
+       <div>
+        <span>Label nota 3:</span>
+       <input id="nota3" value="nota3"/>
       </div>
     </div>
+  
+  
 
-  </body>
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
 </html>
